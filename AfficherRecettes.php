@@ -19,6 +19,36 @@ $recipes = [
         'is_enabled' => true,
     ],
 ];
+
+?>
+
+<?php
+
+function isValidRecipe(array $recipe) : bool {
+    if (array_key_exists('is_enabled', $recipe)) {
+        $isEnabled = $recipe['is_enabled'];
+    } 
+    else {
+        $isEnabled = false;
+    }
+    return $isEnabled;
+}
+
+function getRecipes(array $recipes) : array {
+    $validRecipes = [];
+    foreach($recipes as $recipe) {
+        if (isValidRecipe($recipe)) {
+            $validRecipes[] = $recipe;
+        }
+    }
+    return $validRecipes;
+}
+
+foreach(getRecipes($recipes) as $recipe) {
+    echo $recipe['title'] ..
+}
+
+
 ?>
 
 
