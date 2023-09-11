@@ -1,10 +1,10 @@
 <?php
 $recipes = [
     [
-    'title' => 'Cassoulet',
-    'recipe' => 'Etape 1 : des flageolets ! ',
-    'author' => 'john.doe@exemple.com',
-    'is_enabled' => true,
+        'title' => 'Cassoulet',
+        'recipe' => '',
+        'author' => 'mickael.andrieu@exemple.com',
+        'is_enabled' => true,
     ],
     [
         'title' => 'Couscous',
@@ -14,17 +14,41 @@ $recipes = [
     ],
     [
         'title' => 'Escalope milanaise',
-        'recipe' => 'Etape 1 : prenez une belle escalope',
+        'recipe' => '',
         'author' => 'mathieu.nebra@exemple.com',
         'is_enabled' => true,
     ],
+    [
+        'title' => 'Salade Romaine',
+        'recipe' => '',
+        'author' => 'laurene.castor@exemple.com',
+        'is_enabled' => true,
+    ],
 ];
+
+$users = [
+        [
+            'full_name' => 'Mickaël Andrieu',
+            'email' => 'mickael.andrieu@exemple.com',
+            'age' => 34,
+        ],
+        [
+            'full_name' => 'Mathieu Nebra',
+            'email' => 'mathieu.nebra@exemple.com',
+            'age' => 34,
+        ],
+        [
+            'full_name' => 'Laurène Castor',
+            'email' => 'laurene.castor@exemple.com',
+            'age' => 28,
+        ],
+    ];
 
 ?>
 
 <?php
 
-function isValidRecipe(array $recipe) : bool {
+function isValidRecipe(array $recipe) : bool{
     if (array_key_exists('is_enabled', $recipe)) {
         $isEnabled = $recipe['is_enabled'];
     } 
@@ -44,8 +68,17 @@ function getRecipes(array $recipes) : array {
     return $validRecipes;
 }
 
-foreach(getRecipes($recipes) as $recipe) {
-    echo $recipe['title'] ..
+// foreach(getRecipes($recipes) as $recipe) {
+//     echo $recipe['title'];
+// }
+
+function displayAuthor(string $authorEmail, array $users) : string {
+    for ($i = 0; $i < count($users); $i++) {
+        $author = $users[$i];
+        if ($authorEmail === $author['email']) {
+            return $author['full_name'] . '(' . $author['age'] . ' ans)';
+        }
+    }
 }
 
 
@@ -57,16 +90,20 @@ foreach(getRecipes($recipes) as $recipe) {
 <html>
     <head>
         <title>Affichage des recettes</title>
-        <h1>Affichage des recettes</h1>
+        <h1>Listes des recettes de cuisine</h1>
         <link rel="stylesheet" href="Style.css">
     </head>
     <body>
         <div class="Recipes">
         <?php
-            foreach($recipes as $recipe){
-                if($recipe['is_enabled'] == true){
-                    echo '<h2>' . $recipe['title'] .'</h2>' . '<p>' . $recipe['recipe'] .'<br>' . $recipe['author'] .'</p>';
-                }
+            foreach(getRecipes($recipes) as $recipe){
+                        foreach($users as $user){
+                            if($recipe['author'] == $user['email']){
+                                echo '<h2>'. $recipe['title']. '</h2><br>';
+                                echo '<p>'.displayAuthor($recipe['author'], $users) . '</p>';
+                            }
+                        }
+                    //echo '<h2>' . $recipe['title'] .'</h2>' . '<p>' . $recipe['recipe'] .'<br>' . $recipe['author'] .'</p>';
             }
         ?>
         </div>
