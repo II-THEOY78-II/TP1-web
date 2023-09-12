@@ -1,35 +1,39 @@
+<!-- index.php -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Mon site de recettes - page d'acceuil</title>
-        <link rel="stylesheet" href="Style.css">
-    </head>
- 
-    <body>    
-        <?php include('/php/header.php'); ?>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de recettes - Page d'accueil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  rel="stylesheet">
+    <link href="Style.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div class="container">
 
-        <h1>Mon site de recettes</h1>
-        
-        <?php 
-            include_once('/php/variables.php');
-            include_once('/php/function.php');
-        ?>
-    
-    <div class="Recipes">
+    <?php include_once('/php/header.php'); ?>
+        <h1>Site de recettes</h1>
+
+        <!-- inclusion des variables et fonctions -->
         <?php
-            foreach(getRecipes($recipes) as $recipe){
-                        foreach($users as $user){
-                            if($recipe['author'] == $user['email']){
-                                echo '<h2>'. $recipe['title']. '</h2><br>';
-                                echo '<p>'.displayAuthor($recipe['author'], $users) . '</p>';
-                            }
-                        }
-            }
+            include_once('/php/variables.php');
+            include_once('/php/functions.php');
         ?>
-        </div>
-    
+
+        <!-- inclusion de l'entête du site -->
+        <?php include_once('/php/header.php'); ?>
+        
+        <?php foreach(getRecipes($recipes) as $recipe) : ?>
+            <article>
+                <h3><?php echo $recipe['title']; ?></h3>
+                <div><?php echo $recipe['recipe']; ?></div>
+                <i><?php echo displayAuthor($recipe['author'], $users); ?></i>
+            </article>
+        <?php endforeach ?>
+    </div>
+
+    <!-- inclusion du bas de page du site -->
     <?php include_once('/php/footer.php'); ?>
-    
-    </body>
+</body>
 </html>

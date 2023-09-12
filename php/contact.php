@@ -1,38 +1,42 @@
+<!-- contact.php -->
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Mon site de recettes - contactez-moi</title>
-		<link rel="stylesheet" href="/TP1-web/Style.css">
-	</head>
-	<body>
-		<?php include('header.php'); ?>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de recettes - Formulaire de Contact</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+    >
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div class="container">
 
-		<h3>Mon site de recettes</h3>
+    <?php include_once('header.php'); ?>
+        <h1>Contactez nous</h1>
+        <form action="submit_contact.php" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help">
+                <div id="email-help" class="form-text">Nous ne revendrons pas votre email.</div>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Votre message</label>
+                <textarea class="form-control" placeholder="Exprimez vous" id="message" name="message"></textarea>
+            </div>
+            <!-- Ajout champ d'upload ! -->
+            <div class="mb-3">
+                <label for="screenshot" class="form-label">Votre capture d'écran</label>
+                <input type="file" class="form-control" id="screenshot" name="screenshot" />
+            </div>
+            <!-- Fin ajout du champ -->
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+        <br />
+    </div>
 
-
-		<form>
-			<h1>
-				Contactez moi
-			</h1>
-			<div id="group">
-				<ul>
-					<li>
-						<label for="mail">Email</label><br>
-						<input type="email" id="mail" name="user_mail"><br><br>
-					</li>
-					<li>
-						<label for="msg">Votre message</label><br>
-						<textarea type="message" id="msg" name="user_message"></textarea>
-					</li>
-					<div class="button">
-  						<button type="submit">Envoyer</button>
-  					</div>
-				</ul>
-			</div>
-		</form>
-
-
-	</body>
+    <?php include_once('footer.php'); ?>
+</body>
 </html>
