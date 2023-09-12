@@ -9,6 +9,17 @@
 	    echo('Il faut un email et un message valides pour soumettre le formulaire.');
 	    return;
 	}
+	if (isset($_FILES['screenshot']) && $_FILES['screenshot']['error'] == 0){
+		if ($_FILES['screenshot']['size'] <= 1000000){
+			$fileInfo = pathinfo($_FILES['screenshot']['name']);
+			$extension = $fileInfo['extension'];
+			$allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
+			if (in_array($extension, $allowedExtensions)){
+				move_uploaded_file($_FILES['screenshot']['tmp_name'],'uploads/' . basename($_FILES['screenshot']['name']));
+				echo "L'envoi a bien été effectué !";
+			}
+		}
+	}
 ?>
 
 
