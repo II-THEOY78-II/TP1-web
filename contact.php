@@ -15,6 +15,7 @@
     <div class="container">
 
     <?php include_once('header.php'); ?>
+    
         <h1>Contactez nous</h1>
         <form action="submit_contact.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
