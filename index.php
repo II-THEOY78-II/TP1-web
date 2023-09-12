@@ -12,17 +12,17 @@
 <body class="d-flex flex-column min-vh-100">
     <div class="container">
 
-    <?php include_once('/php/header.php'); ?>
+    <?php include_once('header.php'); ?>
         <h1>Site de recettes</h1>
 
         <!-- inclusion des variables et fonctions -->
         <?php
-            include_once('/php/variables.php');
-            include_once('/php/functions.php');
+            include_once('variables.php');
+            include_once('functions.php');
         ?>
 
         <!-- inclusion de l'entête du site -->
-        <?php include_once('/php/header.php'); ?>
+        <?php include_once('header.php'); ?>
         
         <?php foreach(getRecipes($recipes) as $recipe) : ?>
             <article>
@@ -34,6 +34,6 @@
     </div>
 
     <!-- inclusion du bas de page du site -->
-    <?php include_once('/php/footer.php'); ?>
+    <?php include_once('footer.php'); ?>
 </body>
 </html>
