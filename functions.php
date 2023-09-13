@@ -12,16 +12,6 @@ function isValidRecipe(array $recipe) : bool
     return $isEnabled;
 }
 
-function displayAuthor(string $authorEmail, array $users) : string
-{
-    for ($i = 0; $i < count($users); $i++) {
-        $author = $users[$i];
-        if ($authorEmail === $author['email']) {
-            return $author['full_name'] . '(' . $author['age'] . ' ans)';
-        }
-    }
-}
-
 function getRecipes(array $recipes) : array
 {
     $validRecipes = [];
@@ -34,3 +24,14 @@ function getRecipes(array $recipes) : array
 
     return $validRecipes;
 }
+
+function displayAuthor(string $authorEmail, array $users) : string
+{
+    for ($i = 0; $i < count($users); $i++) {
+        $author = $users[$i];
+        if ($authorEmail === $author['email']) {
+            return $author['full_name'] . '(' . $author['age'] . ' ans)';
+        }
+    }
+}
+
