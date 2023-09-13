@@ -1,9 +1,14 @@
 <?php
 
+
+
+
 // Validation du formulaire
 	if (isset($_POST['email']) && isset($_POST['password'])) {
 		foreach ($users as $user) {
 			if ($_POST['email'] === $user['email'] &&  $_POST['password'] === $user['password']) {
+				session_start();
+				$_SESSION['name']= $user['full_name'];
 				$loggedUser = [ 'email' => $user['email'], ];
 			}
 			else {
