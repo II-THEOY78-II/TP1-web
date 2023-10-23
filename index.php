@@ -1,11 +1,12 @@
 <?php include_once('mysql.php'); ?>
 <!-- Si tout va bien, on peut continuer -->
+
 <?php
-// On récupère tout le contenu de la table recipes
-$sqlQuery = 'SELECT * FROM recipes';
-$recipesStatement = $db->prepare($sqlQuery);
-$recipesStatement->execute();
-$recipes = $recipesStatement->fetchAll();
+    // On récupère tout le contenu de la table recipes
+    $sqlQuery = 'SELECT * FROM recipes';
+    $recipesStatement = $db->prepare($sqlQuery);
+    $recipesStatement->execute();
+    $recipes = $recipesStatement->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +21,7 @@ $recipes = $recipesStatement->fetchAll();
     </head>
     <body class="d-flex flex-column min-vh-100">
         <div class="container">
-    
         <?php include_once('header.php'); ?>
-            
-    
                 <!-- inclusion de l'entête du site -->
             <?php include_once('header.php'); ?>
 
@@ -38,8 +36,6 @@ $recipes = $recipesStatement->fetchAll();
             <?php include_once('login.php'); ?>
             
             
-
-
             <?php if(isset($loggedUser)): ?>
                 <?php foreach(getRecipes($recipes) as $recipe) : ?>
                     <article>

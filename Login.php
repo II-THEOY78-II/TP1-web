@@ -7,7 +7,8 @@
 				session_start();
 				$_SESSION['name']= $user['full_name'];
 				$loggedUser = [ 'email' => $user['email'], ];
-				setcookie('LOGGED_USER',$loggedUser['email'],time()          +          365*24*3600,"","",true,true);
+				$_SESSION['email'] = $user['email'];
+				setcookie('LOGGED_USER',$loggedUser['email'],time()+365*24*3600,"","",true,true);
 			}
 			else {
 				$errorMessage = sprintf('Les informations envoyées ne permettent pas de
@@ -15,9 +16,9 @@
 			 }
 		}
  	}
-	 if(isset($_COOKIE['LOGGED_USER'])){
-		$loggedUser = ['email'=>$_COOKIE['LOGGED_USER'],];
-	 }
+	//  if(isset($_COOKIE['LOGGED_USER'])){
+	// 	$loggedUser = ['email'=> $_COOKIE['LOGGED_USER']];
+	//  }
 ?>
 
 
