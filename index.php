@@ -35,13 +35,18 @@
             <!-- Inclusion du formulaire de connexion -->
             <?php include_once('login.php'); ?>
             
-            
+
             <?php if(isset($loggedUser)): ?>
                 <?php foreach(getRecipes($recipes) as $recipe) : ?>
                     <article>
                         <h3><?php echo $recipe['title']; ?> </h3>
                         <div><?php echo $recipe['recipe']; ?> </div>
                         <i><?php echo displayAuthor($recipe['author'], $users); ?> </i>
+                        <?php if($_SESSION['email'] === $recipe['author']){
+                            echo '<br> <a class="EditBtn" href="Update.php?id='.$recipe['recipe_id'].'">Modifier</a>';
+                            echo '<a class="EditBtn" href="Delete.php?id='.$recipe['recipe_id'].'">Delete</a>';
+                        };
+                        ?>
                     </article>
                 <?php endforeach ?>
             <?php endif; ?>

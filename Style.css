@@ -70,3 +70,14 @@ textarea {
 button {
   margin-left: 30%;
 }
+
+article .EditBtn {
+  text-decoration: none;
+  color : red;
+  margin: 0 15px 0 0;
+}
+
+article .EditBtn:hover{
+  text-decoration: underline;
+  color: darkkhaki;
+}
